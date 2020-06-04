@@ -44,7 +44,7 @@
 
     <script>
       $(document).ready(function () {
-        var apiKey = "e0620bd4";
+        var apiKey = config.ApiKey;
 
         $("#movie-form").submit(function (event) {
           event.preventDefault();
@@ -71,5 +71,6 @@
         });
       });
     </script>
+    <script type="text/javascript" src="config.js"></script>
   </body>
 </html>
