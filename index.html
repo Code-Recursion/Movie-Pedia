@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <title>Movies!</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center mt-3 bg-warning p-2 mb-5" id="header">
+        <span id="movie">Movie</span><span id="pedia">Pedia</span>
+      </h1>
+
+      <form autocomplete="off" id="movie-form">
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="text"
+            id="movie-input"
+            placeholder="Enter Movie name"
+          />
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary" id="search-btn" type="submit">
+            Search
+          </button>
+        </div>
+      </form>
+    </div>
+    <div id="result">result</div>
+    <h3 id="title">title</h3>
+
+    <script>
+      $(document).ready(function () {
+        var apiKey = "e0620bd4";
+
+        $("#movie-form").submit(function (event) {
+          event.preventDefault();
+
+          var movie = $("#movie-input").val();
+          var result = "";
+          var url = "http://www.omdbapi.com/?apikey=" + apiKey;
+
+          $.ajax({
+            method: "GET",
+            url: url + "&t=" + movie,
+            success: function (data) {
+              console.log(data);
+
+              result = `
+              
+              <h2>${data.Title}</h2>
+              <img src="${data.Poster}"></img>
+              `;
+
+              $("#result").html(result);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
