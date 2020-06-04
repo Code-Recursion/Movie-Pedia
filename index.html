@@ -61,15 +61,15 @@
               result = `
               
               <h2>${data.Title}</h2>
-              <img src="${data.Poster}" width="200px" height="200px"></img>
+              <img class="img-thumbnail mb-2" src="${data.Poster}" width="200px" height="200px"></img>
               
-              <ul>
-                <li><strong>Plot</strong> : ${data.Plot}</li>  
-                <li><strong>Actors </strong>: ${data.Actors}</li>  
-                <li><strong>Genre</strong> : ${data.Genre}</li>  
-                <li><strong>Type </strong>: ${data.Type}</li>  
-                <li><strong>Production </strong>: ${data.Production}</li>  
-                <li><strong>Dated </strong>: ${data.DVD}</li>  
+              <ul class="list-group mt-2">
+                <li  class="list-group-item active"><strong>Plot</strong> : ${data.Plot}</li>  
+                <li class="list-group-item"><strong>Actors </strong>: ${data.Actors}</li>  
+                <li class="list-group-item"><strong>Genre</strong> : ${data.Genre}</li>  
+                <li class="list-group-item"><strong>Type </strong>: ${data.Type}</li>  
+                <li class="list-group-item"><strong>Production </strong>: ${data.Production}</li>  
+                <li class="list-group-item"><strong>Dated </strong>: ${data.DVD}</li>  
               </ul>
               `;
 
