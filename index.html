@@ -38,10 +38,8 @@
           </button>
         </div>
       </form>
+      <div id="result"></div>
     </div>
-    <div id="result">result</div>
-    <h3 id="title">title</h3>
-
     <script>
       $(document).ready(function () {
         var apiKey = config.ApiKey;
@@ -50,6 +48,7 @@
           event.preventDefault();
 
           var movie = $("#movie-input").val();
+
           var result = "";
           var url = "http://www.omdbapi.com/?apikey=" + apiKey;
 
@@ -62,7 +61,16 @@
               result = `
               
               <h2>${data.Title}</h2>
-              <img src="${data.Poster}"></img>
+              <img src="${data.Poster}" width="200px" height="200px"></img>
+              
+              <ul>
+                <li><strong>Plot</strong> : ${data.Plot}</li>  
+                <li><strong>Actors </strong>: ${data.Actors}</li>  
+                <li><strong>Genre</strong> : ${data.Genre}</li>  
+                <li><strong>Type </strong>: ${data.Type}</li>  
+                <li><strong>Production </strong>: ${data.Production}</li>  
+                <li><strong>Dated </strong>: ${data.DVD}</li>  
+              </ul>
               `;
 
               $("#result").html(result);
