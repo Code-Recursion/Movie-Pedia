@@ -19,37 +19,35 @@
   <body>
     <div class="container">
       <h1 class="text-center mt-3 bg-warning p-2 mb-5" id="header">
-        <span id="movie">Movie</span><span id="pedia">Pedia</span>
+        Movie Pedia
       </h1>
 
       <form autocomplete="off" id="movie-form">
         <div class="form-group">
-          <input
-            class="form-control"
-            type="text"
-            id="movie-input"
-            placeholder="Enter Movie name"
-          />
+          <input class="form-control" type="text" id="movie-input" autofocus />
         </div>
 
         <div class="form-group">
           <button class="btn btn-primary" id="search-btn" type="submit">
-            Search
+            clear
           </button>
         </div>
       </form>
+
+      <div id="rating"></div>
       <div id="result"></div>
     </div>
     <script>
       $(document).ready(function () {
-        var apiKey = config.ApiKey;
+        $("#movie-input").on("keyup", function (e) {
+          console.log(e.target.value);
 
-        $("#movie-form").submit(function (event) {
-          event.preventDefault();
+          var apiKey = config.ApiKey;
 
           var movie = $("#movie-input").val();
 
           var result = "";
+
           var url = "http://www.omdbapi.com/?apikey=" + apiKey;
 
           $.ajax({
@@ -58,22 +56,30 @@
             success: function (data) {
               console.log(data);
 
+              var rating = `
+                <h1 style="margin:0 auto">${data.Title}</h1>
+                <p class="badge badge-pill badge-dark">Rating : ${data.imdbRating}</p>
+                <p class="badge badge-pill badge-secondary">votes : ${data.imdbVotes}</p>
+                `;
+
               result = `
-              
-              <h2>${data.Title}</h2>
-              <img class="img-thumbnail mb-2" src="${data.Poster}" width="200px" height="200px"></img>
-              
-              <ul class="list-group mt-2">
-                <li  class="list-group-item active"><strong>Plot</strong> : ${data.Plot}</li>  
-                <li class="list-group-item"><strong>Actors </strong>: ${data.Actors}</li>  
-                <li class="list-group-item"><strong>Genre</strong> : ${data.Genre}</li>  
-                <li class="list-group-item"><strong>Type </strong>: ${data.Type}</li>  
-                <li class="list-group-item"><strong>Production </strong>: ${data.Production}</li>  
-                <li class="list-group-item"><strong>Dated </strong>: ${data.DVD}</li>  
-              </ul>
-              `;
+                
+                <img id="poster" class="img-thumbnail mb-2 mx-auto rounded d-block mr-2" src="${data.Poster}"></img>
+                
+              <ul class="list-group mt-2 mb-3">
+                <li  class="list-group-item active"><strong>Plot</strong> : ${data.Plot}</li>
+                <li class="list-group-item"><strong>Actors </strong>: ${data.Actors}</li>
+                <li class="list-group-item"><strong>Genre </strong> : ${data.Genre}</li>
+                <li class="list-group-item"><strong>Type </strong>: ${data.Type}</li>
+                <li class="list-group-item"><strong>Language </strong>: ${data.Language}</li>
+                <li class="list-group-item"><strong>Release Date </strong>: ${data.Released}</li>
+                <li class="list-group-item"><strong>Awards </strong>: ${data.Awards}</li>
+                <li class="list-group-item"><strong>Country </strong>: ${data.Country}</li>
+                </ul>
+                `;
 
               $("#result").html(result);
+              $("#rating").html(rating);
             },
           });
         });

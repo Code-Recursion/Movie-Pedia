@@ -4,5 +4,23 @@
 
 .container {
   color: black;
-  width: 65%;
+}
+
+@media (min-width: 775px) {
+  #poster {
+    float: left;
+    margin-right: 10px;
+  }
+}
+
+#poster {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+#rating {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
