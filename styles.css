@@ -1,5 +1,6 @@
 #header {
   border-radius: 5px;
+  color:white;
 }
 
 .container {
@@ -23,4 +24,8 @@
   text-align: center;
   align-items: center;
   justify-content: center;
+}
+
+#modal {
+  display: none;
 }
