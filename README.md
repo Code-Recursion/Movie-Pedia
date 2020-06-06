@@ -1,15 +1,19 @@
 # Movie-Pedia
 
-#### <strong>Movie Pedia</strong> is an Single Page Application to view All Details related any :
+### 
+
+<pre>
+<strong>Movie Pedia</strong> is an Single Page Application to view All Details related to any :
 <ul>
   <li>Hollywood Movie</li>
-  <li>TV Series</li>
-  <li>BollyWood Movies etc</li>
-</ul> 
+  <li>BollyWood Movies </li>
+  <li>TV Series etc.</li>
+</ul>
+</pre>
 
 <pre>
   packed with <strong>Open Movie Data Base (OMDB)</strong> Fetch API.
-  `Uses AJAX using JQuery`
+  `Using AJAX with JQuery`
 </pre>
 
 ### `Screen Shots`
