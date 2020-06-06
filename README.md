@@ -13,7 +13,7 @@
 
 <pre>
   packed with <strong>Open Movie Data Base (OMDB)</strong> Fetch API.
-  `Using AJAX with JQuery`
+  Using AJAX with JQuery
 </pre>
 
 ### `Screen Shots`
