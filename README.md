@@ -2,7 +2,7 @@
 
 ### 
 
-<pre>
+`
 <strong>Movie Pedia</strong> is an Single Page Application to view All Details related to any :
 <ul>
   <li>Hollywood Movie</li>
@@ -10,7 +10,7 @@
   <li>TV Series etc.</li>
 </ul>
 </pre>
-
+`
 <pre>
   packed with <strong>Open Movie Data Base (OMDB)</strong> API.
   Using AJAX with JQuery
