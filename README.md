@@ -12,7 +12,7 @@
 </pre>
 
 <pre>
-  packed with <strong>Open Movie Data Base (OMDB)</strong> Fetch API.
+  packed with <strong>Open Movie Data Base (OMDB)</strong> API.
   Using AJAX with JQuery
 </pre>
 
