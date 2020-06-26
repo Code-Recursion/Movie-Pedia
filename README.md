@@ -12,6 +12,7 @@
   packed with <strong>Open Movie Data Base (OMDB)</strong> API.
   Using AJAX with JQuery
 
+#### Live Deployment - https://code-recursion.github.io/Movie-Pedia/
 
 ### `Screen Shots`
 
