@@ -2,9 +2,11 @@
 
 <strong>Movie Pedia</strong> is an Single Page Application to view All Details related to any :
 <ul>
-  <li>Hollywood Movie</li>
-  <li>BollyWood Movies </li>
-  <li>TV Series etc.</li>
+  <li> Hollywood Movie </li>
+  <li> Anime </li>
+  <li> Cartoon </li>
+  <li> BollyWood Movies </li>
+  <li> TV Series etc. </li>
 </ul>
 
 
