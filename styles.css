@@ -15,7 +15,7 @@
   color: white;
 }
 
-.container {
+.output_container {
   color: black;
   /* display: none; */
   width: 75%;
@@ -25,7 +25,6 @@
 @media (min-width: 775px) {
   #poster {
     float: left;
-    /* margin-right: 10px; */
   }
 }
 
@@ -43,4 +42,9 @@
 
 #modal {
   display: none;
+}
+
+.output_container {
+  margin: auto;
+  padding: 0;
 }

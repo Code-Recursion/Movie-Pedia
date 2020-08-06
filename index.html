@@ -49,7 +49,7 @@
         </button>
       </div>
     </div>
-    <div class="container">
+    <div class="output_container">
       <div id="rating"></div>
       <div id="result"></div>
 
@@ -107,13 +107,13 @@
             success: function (data) {
              
               if (data.Title == undefined) {
-                $(".container").css("display", "none");
+                $(".output_container").css("display", "none");
                 console.log("nope");
                 $(".error").css("display", "block");
               } 
               else {
                 $(".error").css("display", "none");
-              $(".container").css("display", "block");
+              $(".output_container").css("display", "block");
               var rating = `
                 <h2 style="margin:0 auto" class="w-30 p-3 mb-3 border border-warning rounded">${data.Title}</h2>
                 <p class="badge badge-pill badge-dark p-2" >imdb Rating : ${data.imdbRating}</p>
