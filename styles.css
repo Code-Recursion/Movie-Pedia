@@ -1,3 +1,33 @@
+.anim {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  /* top: 70%; */
+  /* left: 50%; */
+  height: 100%;
+  width: 100%;
+  /*background: transparent
+    url("https://media.giphy.com/media/j2AqKHK9rq217Ag8EX/giphy.gif") 50% 50%
+    no-repeat; */
+  background: transparent url("animation.webp") 50% 50% no-repeat;
+  transform: translate(-50%, -50%);
+  transform: scale(.5);
+}
+
+/* When the body has the loading class, we turn
+ the scrollbar off with overflow:hidden */
+body.loading .anim {
+  overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+ modal element will be visible */
+body.loading .anim {
+  display: block;
+}
+
+/* Loading Animation Ends */
+
 .header_input {
   width: 75%;
   align-items: center;
@@ -47,4 +77,8 @@
 .output_container {
   margin: auto;
   padding: 0;
+}
+
+#poster {
+  padding: 15px;
 }

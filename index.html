@@ -32,6 +32,7 @@
             class="form-control"
             id="movie-input"
             aria-describedby="basic-addon3"
+            autofocus
           />
         </div>
       </form>
@@ -52,6 +53,22 @@
         </button>
       </div>
     </div>
+    <div class="empty_input d-none">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Title Can't Be Empty
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="anim"><!-- Place at bottom of page --></div>
+
     <div class="output_container">
       <div id="rating"></div>
       <div id="result"></div>
@@ -87,6 +104,17 @@
     </div>
 
     <script>
+      $body = $("body");
+
+      $(document).on({
+        ajaxStart: function () {
+          $body.addClass("loading");
+        },
+        ajaxStop: function () {
+          $body.removeClass("loading");
+        },
+      });
+
       // preventing form default submission
       $("form").keypress(function (e) {
         //Enter key
@@ -100,34 +128,35 @@
       });
 
       $(".error").css("display", "none");
+
       $(document).ready(function () {
         $("#movie-input").on("keyup", function () {
           var apiKey = config.ApiKey;
 
           var movie = $("#movie-input").val();
+          if (movie) {
+            var result = "";
 
-          var result = "";
+            var url = "https://www.omdbapi.com/?apikey=" + apiKey;
 
-          var url = "https://www.omdbapi.com/?apikey=" + apiKey;
-
-          $.ajax({
-            method: "GET",
-            url: url + "&t=" + movie,
-            success: function (data) {
-              if (data.Title == undefined) {
-                $(".output_container").css("display", "none");
-                console.log("nope");
-                $(".error").css("display", "block");
-              } else {
-                $(".error").css("display", "none");
-                $(".output_container").css("display", "block");
-                var rating = `
+            $.ajax({
+              method: "GET",
+              url: url + "&t=" + movie,
+              success: function (data) {
+                if (data.Title == undefined) {
+                  $(".output_container").css("display", "none");
+                  console.log("nope");
+                  $(".error").css("display", "block");
+                } else {
+                  $(".error").css("display", "none");
+                  $(".output_container").css("display", "block");
+                  var rating = `
                 <h2 style="margin:0 auto" class="w-30 p-3 mb-3 border border-warning rounded">${data.Title}</h2>
                 <p class="badge badge-pill badge-dark p-2" >imdb Rating : ${data.imdbRating}</p>
                 <p class="badge badge-pill badge-secondary p-2">imdb votes : ${data.imdbVotes}</p>
                 `;
 
-                result = `
+                  result = `
 
                 <img id="poster" alt = "image not available" class="img-thumbnail mb-2 mx-auto rounded d-block mr-2" src="${data.Poster}"></img>
 
@@ -144,20 +173,21 @@
                 </ul>
                 `;
 
-                var plot = `
+                  var plot = `
                   <p>${data.Plot}</p>
               `;
-                $("#result").html(result);
-                $("#rating").html(rating);
+                  $("#result").html(result);
+                  $("#rating").html(rating);
 
-                $("#poster").click(function () {
-                  $("#modal-body").html(plot);
-                  $("#modal").css("display", "block");
-                });
-              }
-            },
-            complete: function () {},
-          });
+                  $("#poster").click(function () {
+                    $("#modal-body").html(plot);
+                    $("#modal").css("display", "block");
+                  });
+                }
+              },
+              complete: function () {},
+            });
+          } else {$(".empty_input").css("display", "block");}
         });
       });
     </script>
