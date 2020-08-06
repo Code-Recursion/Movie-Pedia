@@ -1,16 +1,31 @@
+.header_input {
+  width: 75%;
+  align-items: center;
+}
+.error {
+  width: 75%;
+  margin: auto;
+}
+#red_color {
+  color: rgb(211, 44, 44);
+}
+
 #header {
   border-radius: 5px;
-  color:white;
+  color: white;
 }
 
 .container {
   color: black;
+  /* display: none; */
+  width: 75%;
+  margin: auto;
 }
 
 @media (min-width: 775px) {
   #poster {
     float: left;
-    margin-right: 10px;
+    /* margin-right: 10px; */
   }
 }
 

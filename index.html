@@ -17,7 +17,7 @@
     <title>Movies!</title>
   </head>
   <body>
-    <div class="container">
+    <div class="header_input m-auto">
       <h1 class="text-center mt-3 bg-dark p-2 mb-5" id="header">
         Movie Pedia
       </h1>
@@ -35,7 +35,21 @@
           />
         </div>
       </form>
-
+    </div>
+    <div class="error">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Movie Not Found!</strong> Please Try typing the full Movie Title,<span id="red_color"> <strong>Remember Spaces are also considered</strong></span>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+    <div class="container">
       <div id="rating"></div>
       <div id="result"></div>
 
@@ -70,6 +84,13 @@
     </div>
 
     <script>
+
+      $(".close").click(function(){
+        $(".error").fadeOut();
+      })
+
+
+      $(".error").css("display", "none");
       $(document).ready(function () {
         $("#movie-input").on("keyup", function () {
           var apiKey = config.ApiKey;
@@ -83,8 +104,16 @@
           $.ajax({
             method: "GET",
             url: url + "&t=" + movie,
-
             success: function (data) {
+             
+              if (data.Title == undefined) {
+                $(".container").css("display", "none");
+                console.log("nope");
+                $(".error").css("display", "block");
+              } 
+              else {
+                $(".error").css("display", "none");
+              $(".container").css("display", "block");
               var rating = `
                 <h2 style="margin:0 auto" class="w-30 p-3 mb-3 border border-warning rounded">${data.Title}</h2>
                 <p class="badge badge-pill badge-dark p-2" >imdb Rating : ${data.imdbRating}</p>
@@ -92,9 +121,9 @@
                 `;
 
               result = `
-                
-                <img id="poster" class="img-thumbnail mb-2 mx-auto rounded d-block mr-2" src="${data.Poster}"></img>
-                
+
+                <img id="poster" alt = "image not available" class="img-thumbnail mb-2 mx-auto rounded d-block mr-2" src="${data.Poster}"></img>
+
               <ul class="list-group mt-2 mb-3">
                 <li class="list-group-item"><strong>Actors </strong>: ${data.Actors}</li>
                 <li class="list-group-item"><strong>Genre </strong> : ${data.Genre}</li>
@@ -111,7 +140,6 @@
               var plot = `
                   <p>${data.Plot}</p>
               `;
-
               $("#result").html(result);
               $("#rating").html(rating);
 
@@ -119,7 +147,8 @@
                 $("#modal-body").html(plot);
                 $("#modal").css("display", "block");
               });
-            },
+             } },
+            complete: function () {},
           });
         });
       });
