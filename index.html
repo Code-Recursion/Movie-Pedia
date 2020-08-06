@@ -36,7 +36,19 @@
           />
         </div>
       </form>
+    
+      <div id="tooltip" class="tootltip alert alert-info alert-dismissible fade show" role="alert">
+        Now you can click on Poster to check summary!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  
     </div>
+
+    
+
+
     <div class="error">
       <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong>Movie Not Found!</strong> Please Try typing the full Movie
@@ -84,12 +96,13 @@
                 data-dismiss="modal"
                 aria-label="Close"
               >
-                <span aria-hidden="true" id="close-x">X</span>
+                <span aria-hidden="true" id="close-x" class="close-x">X</span>
               </button>
             </div>
             <div class="modal-body" id="modal-body"></div>
             <div class="modal-footer">
               <button
+                
                 type="button"
                 id="close-btn"
                 class="btn btn-secondary"
@@ -104,7 +117,13 @@
     </div>
 
     <script>
+      
+      setTimeout(function(){
+  $('.tootltip').remove();
+}, 5000);
+      
       $body = $("body");
+
 
       $(document).on({
         ajaxStart: function () {
@@ -123,11 +142,17 @@
         }
       });
 
+
+      // close alert
       $(".close").click(function () {
         $(".error").fadeOut();
+        // $(".alert").fadeOut();
       });
 
+      
       $(".error").css("display", "none");
+
+     
 
       $(document).ready(function () {
         $("#movie-input").on("keyup", function () {
@@ -135,6 +160,7 @@
 
           var movie = $("#movie-input").val();
           if (movie) {
+
             var result = "";
 
             var url = "https://www.omdbapi.com/?apikey=" + apiKey;
@@ -185,11 +211,15 @@
                   });
                 }
               },
-              complete: function () {},
+             
             });
-          } else {$(".empty_input").css("display", "block");}
+          }
         });
       });
+
+
+
+    
     </script>
     <script type="text/javascript" src="config.js"></script>
     <script type="text/javascript" src="main.js"></script>
