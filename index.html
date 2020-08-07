@@ -39,7 +39,7 @@
     
       <div id="tooltip" class="tootltip alert alert-info alert-dismissible fade show" role="alert">
         Now you can click on Poster to check summary!
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" id="close-tooltip" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -118,9 +118,15 @@
 
     <script>
       
+
+      $("#close-tooltip").click(function(){
+          $("#tooltip").fadeOut();
+
+      })
+      
       setTimeout(function(){
-  $('.tootltip').remove();
-}, 5000);
+       $('.tootltip').remove();
+      }, 5000);
       
       $body = $("body");
 
