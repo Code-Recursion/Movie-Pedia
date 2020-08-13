@@ -1,6 +1,6 @@
 # Movie-Pedia
 
-<strong>Movie Pedia</strong> is an Single Page Application to view All Details related to any :
+<strong>Movie Pedia</strong> is a Single Page Application to view All Details related to any :
 <ul>
   <li> Hollywood Movie </li>
   <li> Anime </li>
